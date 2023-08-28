@@ -1,6 +1,5 @@
-package me.Ingrosso.Snipecraft.utils;
+package me.FerskiGames.Snipecraft.utils;
 
-import me.Ingrosso.Snipecraft.Main;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.Plugin;
 

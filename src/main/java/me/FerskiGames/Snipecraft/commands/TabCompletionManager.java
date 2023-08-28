@@ -1,6 +1,6 @@
-package me.Ingrosso.Snipecraft.commands;
+package me.FerskiGames.Snipecraft.commands;
 
-import me.Ingrosso.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

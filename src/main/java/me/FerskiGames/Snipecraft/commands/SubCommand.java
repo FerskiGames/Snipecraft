@@ -1,4 +1,4 @@
-package me.Ingrosso.Snipecraft.commands;
+package me.FerskiGames.Snipecraft.commands;
 
 import org.bukkit.entity.Player;
 

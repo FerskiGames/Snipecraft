@@ -1,15 +1,11 @@
-package me.Ingrosso.Snipecraft.commands.subcommands;
+package me.FerskiGames.Snipecraft.commands.subcommands;
 
-import me.Ingrosso.Snipecraft.Main;
-import me.Ingrosso.Snipecraft.commands.SubCommand;
-import me.Ingrosso.Snipecraft.database.SniperRifle;
-import me.Ingrosso.Snipecraft.listeners.SpyglassShoot;
-import me.Ingrosso.Snipecraft.managers.SniperRifleManager;
+import me.FerskiGames.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.commands.SubCommand;
+import me.FerskiGames.Snipecraft.database.SniperRifle;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class GiveCommand extends SubCommand {
     @Override

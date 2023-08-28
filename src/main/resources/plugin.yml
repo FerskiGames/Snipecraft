@@ -1,7 +1,7 @@
 name: Snipecraft
 version: 1.0
-author: Ingrosso
-main: me.Ingrosso.Snipecraft.Main
+author: FerskiGames
+main: me.FerskiGames.Snipecraft.Main
 description: A plugin to turn the Spyglass into a sniper rifle.
 api-version: 1.17
 

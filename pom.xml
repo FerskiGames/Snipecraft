@@ -47,7 +47,7 @@
                         <relocation>
                             <pattern>dev.dejvokep.boostedyaml</pattern>
                             <!-- Replace this -->
-                            <shadedPattern>me.Ingrosso.Snipecraft</shadedPattern>
+                            <shadedPattern>me.FerskiGames.Snipecraft</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

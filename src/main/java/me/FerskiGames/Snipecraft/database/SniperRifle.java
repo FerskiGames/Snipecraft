@@ -1,16 +1,14 @@
-package me.Ingrosso.Snipecraft.database;
+package me.FerskiGames.Snipecraft.database;
 
-import me.Ingrosso.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.Main;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
 
 import java.util.UUID;
 

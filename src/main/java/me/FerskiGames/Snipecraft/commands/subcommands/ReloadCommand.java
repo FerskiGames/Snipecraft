@@ -1,12 +1,9 @@
-package me.Ingrosso.Snipecraft.commands.subcommands;
+package me.FerskiGames.Snipecraft.commands.subcommands;
 
-import dev.dejvokep.boostedyaml.YamlDocument;
-import me.Ingrosso.Snipecraft.Main;
-import me.Ingrosso.Snipecraft.commands.SubCommand;
+import me.FerskiGames.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.commands.SubCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-
-import java.io.File;
 
 public class ReloadCommand extends SubCommand {
     @Override

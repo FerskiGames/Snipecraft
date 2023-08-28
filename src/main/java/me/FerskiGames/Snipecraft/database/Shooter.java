@@ -1,8 +1,5 @@
-package me.Ingrosso.Snipecraft.database;
+package me.FerskiGames.Snipecraft.database;
 
-import me.Ingrosso.Snipecraft.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class Shooter {

@@ -1,8 +1,8 @@
-package me.Ingrosso.Snipecraft.managers;
+package me.FerskiGames.Snipecraft.managers;
 
-import me.Ingrosso.Snipecraft.Main;
-import me.Ingrosso.Snipecraft.database.SniperRifle;
-import me.Ingrosso.Snipecraft.utils.nsk;
+import me.FerskiGames.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.database.SniperRifle;
+import me.FerskiGames.Snipecraft.utils.nsk;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
@@ -12,9 +12,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
 import java.util.UUID;
 
 public class SniperRifleManager {

@@ -1,7 +1,7 @@
-package me.Ingrosso.Snipecraft.commands;
+package me.FerskiGames.Snipecraft.commands;
 
-import me.Ingrosso.Snipecraft.commands.subcommands.GiveCommand;
-import me.Ingrosso.Snipecraft.commands.subcommands.ReloadCommand;
+import me.FerskiGames.Snipecraft.commands.subcommands.GiveCommand;
+import me.FerskiGames.Snipecraft.commands.subcommands.ReloadCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
