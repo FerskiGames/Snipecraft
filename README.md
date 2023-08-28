@@ -1,0 +1,2 @@
+# Snipecraft
+Customizable spyglass snipers.
