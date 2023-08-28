@@ -1,0 +1,11 @@
+name: Snipecraft
+version: 1.0
+author: Ingrosso
+main: me.Ingrosso.Snipecraft.Main
+description: A plugin to turn the Spyglass into a sniper rifle.
+api-version: 1.17
+
+commands:
+  sc:
+    description: Snipecraft's main command.
+    usage: /sc

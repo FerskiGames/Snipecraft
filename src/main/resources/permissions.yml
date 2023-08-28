@@ -1,0 +1,11 @@
+file-version: 1.0
+
+# Enable/disable the need of each permission and redefine if needed.
+reloadCommandPermissionNeeded: true
+reloadCommand: snipecraft.command.reload
+
+giveCommandPermissionNeeded: true
+giveCommand: snipecraft.command.reload
+
+snipersUsePermissionNeeded: false
+snipersUse: snipecraft.snipers.use

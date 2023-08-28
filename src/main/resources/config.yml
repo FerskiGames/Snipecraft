@@ -1,0 +1,29 @@
+file-version: 1.0
+
+# RGB accepted
+chatPrefix: "§x§a§8§5§3§1§d[Snipecraft] §r"
+
+allowedWorlds:
+  all: true
+  Spawn:
+
+# This value controls the speed at which the projectile will be shot.
+projectileSpeed: 10.0
+
+# These values adjust the position at which the projectile spawns, relative to the player's position
+# I wouldn't change these.
+adjY: 1.6
+adjX: 0.0
+adjZ: 0.0
+
+# This value controls how much the direction error (0-1) at which the projectile is launched while
+# no scoping or while the scope hasn't been locked yet (check next value).
+noScopeError: 0.4
+
+# This value controls the time in ticks it takes since the player right-clicks the sniper to aim until
+# they are able to precisely shoot the projectile towards the aim's cross.
+quickScopeLag: 4
+
+# This is the sound the player will hear when trying to shoot a rifle without enough ammo
+noAmmoSound: BLOCK_ANVIL_PLACE
+
