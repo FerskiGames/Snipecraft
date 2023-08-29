@@ -13,14 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TabCompletionManager implements TabCompleter {
+    private PermissionHelper ph;
     private CommandManager commandManager;
     public TabCompletionManager(){
+        ph = new PermissionHelper("tabCompletion");
         commandManager = new CommandManager();
     }
 
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        if(ph.permissionNeeded()){
+            if(!ph.hasPerm((Player)commandSender)){
+                return null;
+            }
+        }
         if(args.length == 1){
             List<String> cmds = new ArrayList<>();
             for(int i = 0; i < commandManager.getSubCommands().size(); i++){

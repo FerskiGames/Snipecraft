@@ -48,8 +48,8 @@ public class Main extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new InventoryClick(), this);
 
-        getCommand("sc").setExecutor(new CommandManager());
-        getCommand("sc").setTabCompleter(new TabCompletionManager());
+        getCommand("snipe").setExecutor(new CommandManager());
+        getCommand("snipe").setTabCompleter(new TabCompletionManager());
 
         // Create and update the config file
         try {
@@ -82,8 +82,7 @@ public class Main extends JavaPlugin {
                 throw new RuntimeException(e);
             }
         }
-
-        logger.sendMessage(getPrefix() + "Snipecraft Loaded");
+        log(getPrefix() + "Snipecraft Loaded");
     }
 
     @Override
@@ -93,7 +92,7 @@ public class Main extends JavaPlugin {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Bukkit.getServer().getLogger().info(getPrefix() + "Snipecraft Disabled");
+        log(getPrefix() + "Snipecraft Disabled");
     }
 
     public static Main getPlugin(){
@@ -103,6 +102,8 @@ public class Main extends JavaPlugin {
     public YamlDocument getConfiguration(){
         return this.config;
     }
+
+    public YamlDocument getPermissions() { return this.permissions; }
 
     public YamlDocument getSniperRifles(){
         return this.sniperRifles;

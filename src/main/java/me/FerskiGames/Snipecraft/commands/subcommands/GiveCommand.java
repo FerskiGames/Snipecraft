@@ -1,6 +1,8 @@
 package me.FerskiGames.Snipecraft.commands.subcommands;
 
+import dev.dejvokep.boostedyaml.YamlDocument;
 import me.FerskiGames.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.commands.PermissionHelper;
 import me.FerskiGames.Snipecraft.commands.SubCommand;
 import me.FerskiGames.Snipecraft.database.SniperRifle;
 import org.bukkit.Bukkit;
@@ -8,6 +10,17 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class GiveCommand extends SubCommand {
+    private PermissionHelper ph;
+
+    public GiveCommand(){
+        ph = setPermissionHelper("giveCommand");
+    }
+
+    @Override
+    public PermissionHelper setPermissionHelper(String permKey){
+        return new PermissionHelper(permKey);
+    }
+
     @Override
     public String getName() {
         return "give";
@@ -25,12 +38,15 @@ public class GiveCommand extends SubCommand {
 
     @Override
     public void perform(Player player, String[] args) {
-        if(permissionNeeded()){
-            if(!hasPerm(player)){
-                player.sendMessage(Main.getPlugin().getPrefix() + "" + ChatColor.RED + "You don't have permission to do this.");
+        if(ph.permissionNeeded()){
+            if(!ph.hasPerm(player)){
+                ph.sendNoPermMessage(player);
+                if(ph.noPermissionMessage()){
+                    ph.sendMissingPerm(player);
+                }
+                return;
             }
         }
-
         if (args.length == 1 || args.length == 2 ) {
             player.sendMessage(Main.getPlugin().getPrefix() + "" + ChatColor.WHITE + "Correct Usage:\n" + getSyntax());
         }else{
@@ -51,25 +67,7 @@ public class GiveCommand extends SubCommand {
             }else{
                 player.sendMessage(Main.getPlugin().getPrefix() + ChatColor.RED + "That rifle is not defined.");
             }
-
         }
     }
 
-    @Override
-    public boolean permissionNeeded() {
-        boolean needsPerm = false;
-        if(Main.getPlugin().getConfiguration().getBoolean("giveCommandPermissionNeeded")){
-            needsPerm = true;
-        }
-        return needsPerm;
-    }
-
-    @Override
-    public boolean hasPerm(Player player) {
-        boolean has = false;
-        if(player.hasPermission(Main.getPlugin().getConfiguration().getString("giveCommand"))){
-            has = true;
-        }
-        return has;
-    }
 }

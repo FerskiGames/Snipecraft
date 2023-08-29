@@ -22,9 +22,6 @@ public class Shooter {
     }
 
     public void setAiming(Boolean aim){
-        this.aiming = false;
-        if (aim){
-            this.aiming = true;
-        }
+        this.aiming = aim;
     }
 }

@@ -6,6 +6,44 @@ description: A plugin to turn the Spyglass into a sniper rifle.
 api-version: 1.17
 
 commands:
-  sc:
-    description: Snipecraft's main command.
-    usage: /sc
+  snipecraft:
+    description: "Snipecraft's main command"
+    usage: "/snipecraft"
+    aliases: [ snipe, snipecraft, sc ]
+    permission: snipecraft.command
+
+permissions:
+  snipecraft.op:
+    description: "Gives access to all of Snipecraft's functionalities"
+    default: op
+    children:
+      snipecraft.command: true
+      snipecraft.snipers: true
+      snipecraft.autocompletion: true
+
+  snipecraft.command:
+    description: "Gives access to all of Snipecraft's commands"
+    default: op
+    children:
+      snipecraft.command.reload: true
+      snipecraft.command.give: true
+  snipecraft.command.reload:
+    description: Reload the plugin's configurations
+    default: op
+  snipecraft.command.give:
+    description: Give a sniper rifle to a player through /sc give {player} {rifle_name}
+
+  # User a sniper rifle
+  snipecraft.snipers:
+    description: Gives access to all snipers functionalities (including use)
+    default: op
+    children:
+      snipecraft.snipers.use: true
+  snipecraft.snipers.use:
+    description: Allows the usage (shooting) of sniper rifles
+    default: false
+
+  # See all of the plugins sub commands through tab autocompletion
+  snipecraft.autocompletion:
+    description: Allows the player to see the tab autocompletion of commands
+    default: op

@@ -1,6 +1,7 @@
 package me.FerskiGames.Snipecraft.listeners;
 
 import me.FerskiGames.Snipecraft.Main;
+import me.FerskiGames.Snipecraft.commands.PermissionHelper;
 import me.FerskiGames.Snipecraft.managers.SniperRifleManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -15,22 +16,28 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 public class SpyglassShoot implements Listener {
+    private PermissionHelper ph;
     private Player player;
     private ItemStack itemInMainHand;
     private ItemMeta sniperMeta;
     private PersistentDataContainer sniperData;
 
-
+    public SpyglassShoot(){
+        ph = new PermissionHelper("snipersUse");
+    }
     @EventHandler
     public void onPlayerSwap(PlayerSwapHandItemsEvent event) {
         this.player = event.getPlayer();
         this.itemInMainHand = player.getInventory().getItemInMainHand();
-
+        if(ph.permissionNeeded()){
+            if(!ph.hasPerm(player)){
+                return;
+            }
+        }
         if(!itemInMainHand.getType().equals(Material.SPYGLASS) || !itemInMainHand.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(Main.getPlugin(),"isRifle"), PersistentDataType.STRING)){
             return;
         }
         event.setCancelled(true);
-
 
         SniperRifleManager srm = new SniperRifleManager(player, itemInMainHand);
         if(!srm.sniperRifleDefined()){
@@ -43,7 +50,7 @@ public class SpyglassShoot implements Listener {
     @EventHandler
     public void onPlayerAim(PlayerInteractEvent event) {
         this.player = event.getPlayer();
-        if(event.getItem().getType() != Material.SPYGLASS){
+        if(event.getItem() == null || event.getItem().getType() != Material.SPYGLASS){
             return;
         }
         if(Main.getPlugin().getShooter(player) == null){

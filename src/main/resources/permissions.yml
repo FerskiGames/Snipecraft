@@ -1,11 +1,30 @@
 file-version: 1.0
 
-# Enable/disable the need of each permission and redefine if needed.
+# Enable/disable the need of each permission.
+# Avoid changing the actual permission names.
+
+# MESSAGES #
+noPermissionMessage: "&cYou do not have permission to do that."
+sendMissingPerm: true
+# # # # # #
+
+# COMMANDS #
+commandUsePermissionNeeded: true
+commandUse: snipecraft.command
+
 reloadCommandPermissionNeeded: true
 reloadCommand: snipecraft.command.reload
 
 giveCommandPermissionNeeded: true
-giveCommand: snipecraft.command.reload
+giveCommand: snipecraft.command.give
+# # # # # #
 
-snipersUsePermissionNeeded: false
+# SNIPERS #
+snipersUsePermissionNeeded: false # Set to true if you only want players with permission to be able to shoot
 snipersUse: snipecraft.snipers.use
+# # # # # #
+
+# TAB COMPLETION #
+tabCompletionPermissionNeeded: false
+tabCompletion: snipecraft.autocompletion
+# # # # # #
