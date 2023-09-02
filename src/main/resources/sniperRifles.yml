@@ -1,12 +1,14 @@
 # Custom rifles can be created here. For each new rifle just keep copying and pasting
 # Make sure to not repeat the rifles' keys -> in this first case: heavyRifle
 heavyRifle:
-  name: Heavy Rifle
+  name: "§c§lHeavy Rifle"
   projectileType: ARROW
   projectileSpeed: 10
   damage: 10
+  # In degrees
+  recoil: 2
   # In ticks (0 for no delay between shots)
-  fireDelay: 20
+  fireDelay: 16
   # This particle effect is the one that will spawn at the sniper when shooting
   # Leave blank for none
   shotParticle: ASH

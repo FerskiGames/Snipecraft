@@ -19,7 +19,6 @@ public class SniperRifle {
     private ItemStack sniperRifleItem;
     private ItemMeta itemMeta;
     private PersistentDataContainer data;
-
     private String rifleUUID;
 
     public SniperRifle(String key){

@@ -35,8 +35,6 @@ public class PermissionHelper {
         player.sendMessage(ChatColor.WHITE + getPermFile().getString(permKey));
     }
 
-    public YamlDocument getPermFile(){
-        return Main.getPlugin().getPermissions();
-    }
+    public YamlDocument getPermFile(){ return Main.getPlugin().getPermissions(); }
 
 }

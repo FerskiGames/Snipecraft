@@ -18,7 +18,7 @@ adjZ: 0.0
 
 # This value controls how much the direction error (0-1) at which the projectile is launched while
 # no scoping or while the scope hasn't been locked yet (check next value).
-noScopeError: 0.4
+noScopeError: 0.2
 
 # This value controls the time in ticks it takes since the player right-clicks the sniper to aim until
 # they are able to precisely shoot the projectile towards the aim's cross.

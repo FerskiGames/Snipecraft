@@ -1,5 +1,6 @@
 package me.FerskiGames.Snipecraft.managers;
 
+import dev.dejvokep.boostedyaml.YamlDocument;
 import me.FerskiGames.Snipecraft.Main;
 import me.FerskiGames.Snipecraft.database.SniperRifle;
 import me.FerskiGames.Snipecraft.utils.nsk;
@@ -45,19 +46,19 @@ public class SniperRifleManager {
         }
 
         if(!hasAmmo()){
-            world.playSound(loc, Sound.valueOf(Main.getPlugin().getConfiguration().getString("noAmmoSound")), 1.0f, 1.0f);
+            world.playSound(loc, Sound.valueOf(getConfig().getString("noAmmoSound")), 1.0f, 1.0f);
             return;
         }
+
+        // ACTION
         takeAmmo();
 
-        loc.setY(loc.getY() + Main.getPlugin().getConfiguration().getDouble("adjY"));
-
-        loc.setX(loc.getX() + Main.getPlugin().getConfiguration().getDouble("adjX"));
-
-        loc.setZ(loc.getZ() + Main.getPlugin().getConfiguration().getDouble("adjZ"));
+        loc.setY(loc.getY() + getConfig().getDouble("adjY"));
+        loc.setX(loc.getX() + getConfig().getDouble("adjX"));
+        loc.setZ(loc.getZ() + getConfig().getDouble("adjZ"));
 
         Vector dir = player.getEyeLocation().getDirection();
-        if(!Main.getPlugin().getShooter(player).getIsAiming() || player.getItemInUse() == null){
+        if(isNoScope()){
             Main.getPlugin().getShooter(player).setAiming(false);
             Random rand = new Random();
             double  randNoScope = Main.getPlugin().getConfiguration().getDouble("noScopeError");
@@ -89,6 +90,12 @@ public class SniperRifleManager {
         world.playSound(loc, readShotSound(), 1.0f, 1.0f);
         world.spawnParticle(readShotParticle(), loc, 10, 0.5, 0.5, 0.5, 0.1);
 
+        // Recoil only if hardscoping
+        if(!isNoScope()){
+            RecoilManager recoil = new RecoilManager(player,readRecoil());
+            recoil.applyRecoil();
+        }
+
         // Set sniper on cool down
         setOnCD();
     }
@@ -117,6 +124,10 @@ public class SniperRifleManager {
         return has;
     }
 
+    public boolean isNoScope(){
+        return !Main.getPlugin().getShooter(player).getIsAiming() || player.getItemInUse() == null;
+    }
+
     public void takeAmmo(){
         player.getInventory().removeItem(new ItemStack(Material.getMaterial(readProjectileType()),1));
     }
@@ -137,6 +148,7 @@ public class SniperRifleManager {
         return cd;
     }
 
+    public YamlDocument getConfig(){ return Main.getPlugin().getConfiguration(); }
 
     public String extractKey(){
         return sniperRifleData.get(NSK.key("key"),PersistentDataType.STRING);
@@ -157,6 +169,10 @@ public class SniperRifleManager {
 
     public double readDamage(){
         return Main.getPlugin().getSniperRifles().getDouble(key + ".damage");
+    }
+
+    public float readRecoil(){
+        return Main.getPlugin().getSniperRifles().getFloat(key + ".recoil");
     }
 
     public long readFireDelay(){
