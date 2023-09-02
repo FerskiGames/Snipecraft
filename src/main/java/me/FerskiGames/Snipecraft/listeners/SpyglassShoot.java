@@ -2,6 +2,7 @@ package me.FerskiGames.Snipecraft.listeners;
 
 import me.FerskiGames.Snipecraft.Main;
 import me.FerskiGames.Snipecraft.commands.PermissionHelper;
+import me.FerskiGames.Snipecraft.handlers.ShootersHandler;
 import me.FerskiGames.Snipecraft.managers.SniperRifleManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -19,8 +20,6 @@ public class SpyglassShoot implements Listener {
     private PermissionHelper ph;
     private Player player;
     private ItemStack itemInMainHand;
-    private ItemMeta sniperMeta;
-    private PersistentDataContainer sniperData;
 
     public SpyglassShoot(){
         ph = new PermissionHelper("snipersUse");
@@ -53,21 +52,21 @@ public class SpyglassShoot implements Listener {
         if(event.getItem() == null || event.getItem().getType() != Material.SPYGLASS){
             return;
         }
-        if(Main.getPlugin().getShooter(player) == null){
-            Main.getPlugin().addShooter(player);
+        if(Main.getPlugin().getShootersHandler().getShooter(player) == null){
+            Main.getPlugin().getShootersHandler().addShooter(player);
         }
-        Main.getPlugin().getShooter(player).setAiming(false);
+        Main.getPlugin().getShootersHandler().getShooter(player).setAiming(false);
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), new Runnable(){
             @Override
             public void run(){
-                Main.getPlugin().getShooter(player).setAiming(true);
+                Main.getPlugin().getShootersHandler().getShooter(player).setAiming(true);
             }
         }, Main.getPlugin().getConfiguration().getLong("quickScopeLag"));
     }
 
     public void onItemChange(PlayerItemHeldEvent event){
         this.player = event.getPlayer();
-        if(Main.getPlugin().getShooter(player).getIsAiming()){
+        if(Main.getPlugin().getShootersHandler().getShooter(player).getIsAiming()){
             event.setCancelled(true);
         }
     }

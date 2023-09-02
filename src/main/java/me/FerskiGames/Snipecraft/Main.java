@@ -8,14 +8,13 @@ import dev.dejvokep.boostedyaml.settings.loader.LoaderSettings;
 import dev.dejvokep.boostedyaml.settings.updater.UpdaterSettings;
 import me.FerskiGames.Snipecraft.commands.CommandManager;
 import me.FerskiGames.Snipecraft.commands.TabCompletionManager;
-import me.FerskiGames.Snipecraft.database.Shooter;
+import me.FerskiGames.Snipecraft.handlers.ShootersHandler;
 import me.FerskiGames.Snipecraft.listeners.Collision;
 import me.FerskiGames.Snipecraft.listeners.InventoryClick;
 import me.FerskiGames.Snipecraft.listeners.PlayerJoinLeave;
 import me.FerskiGames.Snipecraft.listeners.SpyglassShoot;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -31,8 +30,7 @@ public class Main extends JavaPlugin {
     public YamlDocument sniperRifles;
 
     public YamlDocument permissions;
-
-    private ArrayList<Shooter> shooters;
+    private ShootersHandler shootersHandler;
 
     private ArrayList<UUID> cooldowns;
 
@@ -40,7 +38,7 @@ public class Main extends JavaPlugin {
     public void onEnable(){
         plugin = this;
         logger = Bukkit.getConsoleSender();
-        shooters = new ArrayList<>();
+        shootersHandler = new ShootersHandler();
         cooldowns = new ArrayList<>();
 
         Bukkit.getServer().getPluginManager().registerEvents(new SpyglassShoot(), this);
@@ -113,31 +111,6 @@ public class Main extends JavaPlugin {
         logger.sendMessage(str);
     }
 
-
-    public ArrayList<Shooter> getShooters(){ return shooters; }
-
-    public Shooter getShooter(Player player){
-        Shooter shooter = null;
-        for (int i = 0; i < shooters.size(); i++){
-            if(shooters.get(i).getPlayer().getUniqueId().equals(player.getUniqueId())){
-                shooter = shooters.get(i);
-            }
-        }
-        return shooter;
-    }
-
-    public void addShooter(Player player){
-        shooters.add(new Shooter(player));
-    }
-
-    public void removeShooter(Player player){
-        for (int i = 0; i < shooters.size(); i++){
-            if(shooters.get(i).getPlayer().getUniqueId().equals(player.getUniqueId())){
-                shooters.remove(i);
-            }
-        }
-    }
-
     public ArrayList<UUID> getCooldowns(){
         return cooldowns;
     }
@@ -145,4 +118,6 @@ public class Main extends JavaPlugin {
     public String getPrefix(){
         return prefix;
     }
+
+    public ShootersHandler getShootersHandler(){ return this.shootersHandler; }
 }

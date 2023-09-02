@@ -34,6 +34,6 @@ public class RecoilManager {
     }
 
     private boolean isNoScope(){
-        return !Main.getPlugin().getShooter(player).getIsAiming() || player.getItemInUse() == null;
+        return !Main.getPlugin().getShootersHandler().getShooter(player).getIsAiming() || player.getItemInUse() == null;
     }
 }

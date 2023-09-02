@@ -59,7 +59,7 @@ public class SniperRifleManager {
 
         Vector dir = player.getEyeLocation().getDirection();
         if(isNoScope()){
-            Main.getPlugin().getShooter(player).setAiming(false);
+            Main.getPlugin().getShootersHandler().getShooter(player).setAiming(false);
             Random rand = new Random();
             double  randNoScope = Main.getPlugin().getConfiguration().getDouble("noScopeError");
             double xFactor = rand.nextDouble() * (randNoScope*2) - randNoScope;
@@ -125,7 +125,7 @@ public class SniperRifleManager {
     }
 
     public boolean isNoScope(){
-        return !Main.getPlugin().getShooter(player).getIsAiming() || player.getItemInUse() == null;
+        return !Main.getPlugin().getShootersHandler().getShooter(player).getIsAiming() || player.getItemInUse() == null;
     }
 
     public void takeAmmo(){

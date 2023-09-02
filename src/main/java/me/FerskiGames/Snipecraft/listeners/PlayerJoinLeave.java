@@ -13,13 +13,13 @@ public class PlayerJoinLeave implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         player = event.getPlayer();
-        Main.getPlugin().addShooter(player);
+        Main.getPlugin().getShootersHandler().addShooter(player);
     }
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent event) {
         player = event.getPlayer();
-        Main.getPlugin().removeShooter(player);
+        Main.getPlugin().getShootersHandler().removeShooter(player);
     }
 
 }
