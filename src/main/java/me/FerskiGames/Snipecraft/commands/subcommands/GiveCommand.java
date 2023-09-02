@@ -33,7 +33,7 @@ public class GiveCommand extends SubCommand {
 
     @Override
     public String getSyntax() {
-        return "/sc give <player> <sniper>";
+        return "/sc give <player> <rifleId>";
     }
 
     @Override

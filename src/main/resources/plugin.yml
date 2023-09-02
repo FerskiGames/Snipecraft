@@ -31,7 +31,7 @@ permissions:
     description: Reload the plugin's configurations
     default: op
   snipecraft.command.give:
-    description: Give a sniper rifle to a player through /sc give {player} {rifle_name}
+    description: Give a sniper rifle to a player through /sc give {player} {rifleId}
 
   # User a sniper rifle
   snipecraft.snipers:
