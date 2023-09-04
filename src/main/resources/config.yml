@@ -1,11 +1,17 @@
-file-version: 1.0
+file-version: 2
 
+# This prefix will come before every message prompted by the plugin
 # RGB accepted
 chatPrefix: "§x§a§8§5§3§1§d[Snipecraft] §r"
 
+# If "all" is set to false, sniper rifles will only work within the listed worlds
 allowedWorlds:
   all: true
-  Spawn:
+  list:
+    - Names
+    - Of
+    - Your
+    - Worlds
 
 # This value controls the speed at which the projectile will be shot.
 projectileSpeed: 10.0
@@ -16,12 +22,12 @@ adjY: 1.6
 adjX: 0.0
 adjZ: 0.0
 
-# This value controls how much the direction error (0-1) at which the projectile is launched while
-# no scoping or while the scope hasn't been locked yet (check next value).
+# This value defines the direction error (0-1) at which the projectile is launched while
+# no scoping or while the bloom has not locked/closed yet (check next value).
 noScopeError: 0.2
 
 # This value controls the time in ticks it takes since the player right-clicks the sniper to aim until
-# they are able to precisely shoot the projectile towards the aim's cross.
+# they are able to precisely shoot the projectile towards the aim's cross, AKA bloom closing.
 quickScopeLag: 4
 
 # This is the sound the player will hear when trying to shoot a rifle without enough ammo

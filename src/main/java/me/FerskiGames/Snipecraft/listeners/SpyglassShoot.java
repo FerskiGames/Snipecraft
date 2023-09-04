@@ -2,7 +2,6 @@ package me.FerskiGames.Snipecraft.listeners;
 
 import me.FerskiGames.Snipecraft.Main;
 import me.FerskiGames.Snipecraft.commands.PermissionHelper;
-import me.FerskiGames.Snipecraft.handlers.ShootersHandler;
 import me.FerskiGames.Snipecraft.managers.SniperRifleManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -12,8 +11,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 public class SpyglassShoot implements Listener {
@@ -26,13 +23,20 @@ public class SpyglassShoot implements Listener {
     }
     @EventHandler
     public void onPlayerSwap(PlayerSwapHandItemsEvent event) {
+        if(!Main.getPlugin().getConfiguration().getBoolean("allowedWorlds.all") &&
+        !Main.getPlugin().getConfiguration().getList("allowedWorlds.list").contains(event.getPlayer().getWorld().getName())){
+           return;
+        }
+
         this.player = event.getPlayer();
         this.itemInMainHand = player.getInventory().getItemInMainHand();
+
         if(ph.permissionNeeded()){
             if(!ph.hasPerm(player)){
                 return;
             }
         }
+
         if(!itemInMainHand.getType().equals(Material.SPYGLASS) || !itemInMainHand.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(Main.getPlugin(),"isRifle"), PersistentDataType.STRING)){
             return;
         }
